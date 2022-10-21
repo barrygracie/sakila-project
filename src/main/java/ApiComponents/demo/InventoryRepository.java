@@ -2,5 +2,5 @@ package ApiComponents.demo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface InventoryRepository extends JpaRepository<Actor, Integer> {
+public interface InventoryRepository extends JpaRepository<Inventory, Integer> {
 }

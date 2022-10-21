@@ -14,8 +14,34 @@ public class SakilaMicroserviceApplication {
 	@Autowired
 	private ActorRepository actorRepo;
 
-	public SakilaMicroserviceApplication(ActorRepository actorRepo){
+	@Autowired
+	private AddressRepository addressRepo;
+
+	@Autowired
+	private CityRepository cityRepo;
+
+	@Autowired
+	private CountryRepository countryRepo;
+
+	@Autowired
+	private CustomerRepository customerRepo;
+
+	@Autowired
+	private FilmRepository filmRepo;
+
+	@Autowired
+	private FilmActorRepository filmActorRepo;
+
+	@Autowired
+	private Inventory inventoryRepo;
+
+	@Autowired
+	private RentalRepository rentalRepo;
+
+
+	public SakilaMicroserviceApplication(ActorRepository actorRepo, FilmRepository filmRepo){
 		this.actorRepo = actorRepo;
+		this.filmRepo = filmRepo;
 	}
 	public static void main(String[] args) {
 		SpringApplication.run(SakilaMicroserviceApplication.class, args);
@@ -25,6 +51,12 @@ public class SakilaMicroserviceApplication {
 	public @ResponseBody
 	Iterable<Actor> getAllActors(){
 		return actorRepo.findAll();
+	}
+
+	@GetMapping("/allFilms")
+	public @ResponseBody
+	Iterable<Film> getAllFilms(){
+		return filmRepo.findAll();
 	}
 
 }

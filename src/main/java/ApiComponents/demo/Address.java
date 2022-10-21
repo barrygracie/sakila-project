@@ -20,9 +20,45 @@ public class Address {
     int cityId;
 
     //Constructors
+    public Address (String address, String district, int cityId){
+        this.address = address;
+        this.district = district;
+        this.cityId = cityId;
+    }
 
-
+    public Address(){}
 
 
     //Methods
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getDistrict(){
+        return district;
+    }
+
+    public void setDistrict(String district) {
+        this.district = district;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
 }
