@@ -33,7 +33,7 @@ public class SakilaMicroserviceApplication {
 	private FilmActorRepository filmActorRepo;
 
 	@Autowired
-	private Inventory inventoryRepo;
+	private InventoryRepository inventoryRepo;
 
 	@Autowired
 	private RentalRepository rentalRepo;

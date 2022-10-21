@@ -1,6 +1,8 @@
 package ApiComponents.demo;
 import javax.persistence.*;
 
+@Entity
+@Table(name = "country")
 public class Country {
     //Attributes
     @Id
