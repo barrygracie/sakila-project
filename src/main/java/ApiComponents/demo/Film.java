@@ -36,6 +36,7 @@ public class Film {
     //Constructors
 
     public Film(int filmId, String title, String description, int rentalDuration, double rentalRate, int length, double cost, String rating) {
+        this.filmId = filmId;
         this.title = title;
         this.description = description;
         this.rentalDuration = rentalDuration;

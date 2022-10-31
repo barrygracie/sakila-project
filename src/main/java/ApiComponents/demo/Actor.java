@@ -24,6 +24,12 @@ public class Actor {
         this.actorLastName = actorLastName;
     }
 
+    public Actor(int actorId, String actorFirstName, String actorLastName){
+        this.actorId = actorId;
+        this.actorFirstName = actorFirstName;
+        this.actorLastName = actorLastName;
+    }
+
     public Actor(){}
 
     //Methods
