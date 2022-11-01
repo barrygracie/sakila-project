@@ -13,6 +13,8 @@ public class FilmActor {
     @Column(name = "film_id")
     int filmId;
 
+
+
     //Constructors
     public FilmActor (int filmId){
         this.filmId = filmId;

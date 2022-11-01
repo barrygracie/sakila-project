@@ -21,8 +21,6 @@ public class SakilaMicroserviceApplication {
 	@Autowired
 	private ActorRepository actorRepo;
 
-	@Autowired
-	private AddressRepository addressRepo;
 
 	@Autowired
 	private CityRepository cityRepo;
@@ -30,8 +28,6 @@ public class SakilaMicroserviceApplication {
 	@Autowired
 	private CountryRepository countryRepo;
 
-	@Autowired
-	private CustomerRepository customerRepo;
 
 	@Autowired
 	private FilmRepository filmRepo;
@@ -39,19 +35,16 @@ public class SakilaMicroserviceApplication {
 	@Autowired
 	private FilmActorRepository filmActorRepo;
 
-	@Autowired
-	private InventoryRepository inventoryRepo;
-
-	@Autowired
-	private RentalRepository rentalRepo;
 
 
-	public SakilaMicroserviceApplication(ActorRepository actorRepo, FilmRepository filmRepo, CityRepository cityRepo, FilmActorRepository filmActorRepo){
+	public SakilaMicroserviceApplication(ActorRepository actorRepo, FilmRepository filmRepo, CityRepository cityRepo, FilmActorRepository filmActorRepo, CountryRepository countryRepo){
 		this.actorRepo = actorRepo;
 		this.filmRepo = filmRepo;
 		this.cityRepo = cityRepo;
+		this.countryRepo = countryRepo;
 		this.filmActorRepo = filmActorRepo;
 	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(SakilaMicroserviceApplication.class, args);
 	}
@@ -123,20 +116,6 @@ public class SakilaMicroserviceApplication {
 		Film film = filmRepo.findById(filmId)
 				.orElseThrow(() -> new ResourceAccessException("Film not found for this id: " + filmId));
 		return ResponseEntity.ok().body(film);
-	}
-
-	@GetMapping("/allAddress")
-	public @ResponseBody
-	Iterable<Address> getAllAddress(){
-		return addressRepo.findAll();
-	}
-
-	@GetMapping("/address/{id}")
-	public ResponseEntity<Address> getAddressById(@PathVariable(value = "id") int addressId)
-			throws ResourceAccessException {
-		Address address = addressRepo.findById(addressId)
-				.orElseThrow(() -> new ResourceAccessException("Address not found for this id: " + addressId));
-		return ResponseEntity.ok().body(address);
 	}
 
 	@GetMapping("/allCity")
