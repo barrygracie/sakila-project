@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.ResourceAccessException;
 
 
+import java.util.Collection;
 import java.util.Optional;
+import java.util.Set;
 
 @SpringBootApplication
 @RestController
@@ -145,5 +147,24 @@ public class SakilaMicroserviceApplication {
 				.orElseThrow(() -> new ResourceAccessException("Record not found for this id: " + filmActorId));
 		return ResponseEntity.ok().body(filmActor);
 	}
+
+	@GetMapping("/actorsFilms/{id}")
+	public Set<Film> getActorsFilms(@PathVariable(value = "id") int actorId)
+			throws ResourceAccessException {
+		Actor actor = actorRepo.findById(actorId)
+				.orElseThrow(() -> new ResourceAccessException("Actor not found for this id: " + actorId));
+		return actor.getFilms();
+	}
+/*
+	@GetMapping("/actorsFilms/{id}")
+	public Set<Actor> getFilmsActors(@PathVariable(value = "id") int filmId)
+			throws ResourceAccessException {
+		Film film = filmRepo.findById(filmId)
+				.orElseThrow(() -> new ResourceAccessException("Actor not found for this id: " + filmId));
+		return film.getActors();
+	}
+
+ */
+
 
 }

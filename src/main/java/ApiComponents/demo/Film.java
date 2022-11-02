@@ -1,8 +1,9 @@
 package ApiComponents.demo;
 
-import org.hibernate.mapping.Set;
-
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.Set;
+import java.util.HashSet;
 
 @Entity
 @Table(name="film")
@@ -12,6 +13,13 @@ public class Film {
     @Column(name = "film_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int filmId;
+
+
+    @ManyToMany(mappedBy = "films", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    //@JoinTable(name = "film_actor", joinColumns = @JoinColumn(name = "film_id"),
+    //inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    Set<Actor> actors;
+
 
 
     @Column(name = "title")
@@ -117,4 +125,12 @@ public class Film {
     public void setRating(String rating) {
         this.rating = rating;
     }
+
+    /*public Set<Actor> getActors() {
+        return actors;
+    }
+
+     */
+
+
 }

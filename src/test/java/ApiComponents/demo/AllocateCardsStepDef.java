@@ -4,7 +4,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
+
+//@ScenarioScope ??
 public class AllocateCardsStepDef {
+
+    //autowire repositories needed and the app itself
 
     @Given("a user starting the game")
     public void a_user_starting_the_game() {

@@ -14,7 +14,6 @@ public class FilmActor {
     int filmId;
 
 
-
     //Constructors
     public FilmActor (int filmId){
         this.filmId = filmId;

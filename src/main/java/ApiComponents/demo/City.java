@@ -10,6 +10,10 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int cityId;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "country_id", insertable = false, updatable = false)
+    Country c;
+
     @Column(name = "city")
     String city;
 

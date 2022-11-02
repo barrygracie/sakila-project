@@ -1,6 +1,9 @@
 package ApiComponents.demo;
 
 import javax.persistence.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="actor")
@@ -10,6 +13,11 @@ public class Actor {
     @Column(name = "actor_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int actorId;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "film_actor", joinColumns = @JoinColumn(name = "actor_id"),
+            inverseJoinColumns = @JoinColumn(name = "film_id"))
+    Set<Film> films;
 
     @Column(name = "first_name")
     String actorFirstName;
@@ -56,5 +64,9 @@ public class Actor {
 
     public void setActorId(int actorId) {
         this.actorId = actorId;
+    }
+
+    public Set<Film> getFilms() {
+        return films;
     }
 }
