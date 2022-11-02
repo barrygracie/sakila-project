@@ -16,9 +16,15 @@ public class Film {
 
 
     @ManyToMany(mappedBy = "films", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    //@JoinTable(name = "film_actor", joinColumns = @JoinColumn(name = "film_id"),
-    //inverseJoinColumns = @JoinColumn(name = "actor_id"))
     Set<Actor> actors;
+
+    @ManyToOne
+    @JoinTable(
+            name = "film_category",
+            joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    Category category;
 
 
 
@@ -126,7 +132,16 @@ public class Film {
         this.rating = rating;
     }
 
-    /*public Set<Actor> getActors() {
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    /*
+    public Set<Actor> getActors() {
         return actors;
     }
 

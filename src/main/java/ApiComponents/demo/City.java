@@ -10,7 +10,9 @@ public class City {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int cityId;
 
-    @ManyToOne(optional = false)
+    //@ManyToOne(optional = false)
+    //@JoinColumn(name = "country_id", insertable = false, updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", insertable = false, updatable = false)
     Country c;
 
@@ -54,4 +56,5 @@ public class City {
     public void setCountryId(int countryId) {
         this.countryId = countryId;
     }
+
 }

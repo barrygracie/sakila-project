@@ -23,13 +23,11 @@ public class SakilaMicroserviceApplication {
 	@Autowired
 	private ActorRepository actorRepo;
 
-
 	@Autowired
 	private CityRepository cityRepo;
 
 	@Autowired
 	private CountryRepository countryRepo;
-
 
 	@Autowired
 	private FilmRepository filmRepo;
@@ -37,14 +35,19 @@ public class SakilaMicroserviceApplication {
 	@Autowired
 	private FilmActorRepository filmActorRepo;
 
+	@Autowired
+	private CategoryRepository catRepo;
 
 
-	public SakilaMicroserviceApplication(ActorRepository actorRepo, FilmRepository filmRepo, CityRepository cityRepo, FilmActorRepository filmActorRepo, CountryRepository countryRepo){
+
+	public SakilaMicroserviceApplication(ActorRepository actorRepo, FilmRepository filmRepo, CityRepository cityRepo,
+										 FilmActorRepository filmActorRepo, CountryRepository countryRepo, CategoryRepository catRepo){
 		this.actorRepo = actorRepo;
 		this.filmRepo = filmRepo;
 		this.cityRepo = cityRepo;
 		this.countryRepo = countryRepo;
 		this.filmActorRepo = filmActorRepo;
+		this.catRepo = catRepo;
 	}
 
 	public static void main(String[] args) {
@@ -155,8 +158,25 @@ public class SakilaMicroserviceApplication {
 				.orElseThrow(() -> new ResourceAccessException("Actor not found for this id: " + actorId));
 		return actor.getFilms();
 	}
+
+	@GetMapping("/allCategories")
+	public @ResponseBody
+	Iterable<Category> getAllCategories(){
+		return catRepo.findAll();
+	}
+
+	@GetMapping("/allCountries")
+	public @ResponseBody
+	Iterable<Country> getAllCountries(){
+		return countryRepo.findAll();
+	}
+
+	@GetMapping("/randomFilms")
+	public @ResponseBody
+	Set<Film> getRandomFilms() { return filmRepo.getRandom8Films();}
+
 /*
-	@GetMapping("/actorsFilms/{id}")
+	@GetMapping("/filmsActors/{id}")
 	public Set<Actor> getFilmsActors(@PathVariable(value = "id") int filmId)
 			throws ResourceAccessException {
 		Film film = filmRepo.findById(filmId)
@@ -165,6 +185,7 @@ public class SakilaMicroserviceApplication {
 	}
 
  */
+
 
 
 }

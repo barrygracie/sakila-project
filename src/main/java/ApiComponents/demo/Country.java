@@ -1,5 +1,10 @@
 package ApiComponents.demo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "country")
@@ -12,6 +17,11 @@ public class Country {
 
     @Column(name = "country")
     String country;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "c")
+    @Fetch(FetchMode.JOIN)
+    @JsonIgnore
+    Set<City> City;
 
     //Constructors
     public Country (String country){
@@ -37,5 +47,9 @@ public class Country {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Set<ApiComponents.demo.City> getCity() {
+        return City;
     }
 }

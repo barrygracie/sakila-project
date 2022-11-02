@@ -14,16 +14,16 @@ public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     int actorId;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "film_actor", joinColumns = @JoinColumn(name = "actor_id"),
-            inverseJoinColumns = @JoinColumn(name = "film_id"))
-    Set<Film> films;
-
     @Column(name = "first_name")
     String actorFirstName;
 
     @Column(name = "last_name")
     String actorLastName;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "film_actor", joinColumns = @JoinColumn(name = "actor_id"),
+            inverseJoinColumns = @JoinColumn(name = "film_id"))
+    Set<Film> films;
 
 
     //Constructors
