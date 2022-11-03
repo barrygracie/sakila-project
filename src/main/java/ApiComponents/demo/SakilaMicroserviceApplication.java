@@ -11,6 +11,7 @@ import org.springframework.web.client.ResourceAccessException;
 
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -32,21 +33,17 @@ public class SakilaMicroserviceApplication {
 	@Autowired
 	private FilmRepository filmRepo;
 
-	@Autowired
-	private FilmActorRepository filmActorRepo;
 
 	@Autowired
 	private CategoryRepository catRepo;
 
 
 
-	public SakilaMicroserviceApplication(ActorRepository actorRepo, FilmRepository filmRepo, CityRepository cityRepo,
-										 FilmActorRepository filmActorRepo, CountryRepository countryRepo, CategoryRepository catRepo){
+	public SakilaMicroserviceApplication(ActorRepository actorRepo, FilmRepository filmRepo, CityRepository cityRepo, CountryRepository countryRepo, CategoryRepository catRepo){
 		this.actorRepo = actorRepo;
 		this.filmRepo = filmRepo;
 		this.cityRepo = cityRepo;
 		this.countryRepo = countryRepo;
-		this.filmActorRepo = filmActorRepo;
 		this.catRepo = catRepo;
 	}
 
@@ -137,19 +134,7 @@ public class SakilaMicroserviceApplication {
 		return ResponseEntity.ok().body(city);
 	}
 
-	@GetMapping("/allFilmActor")
-	public @ResponseBody
-	Iterable<FilmActor> getAllFilmActor(){
-		return filmActorRepo.findAll();
-	}
 
-	@GetMapping("/filmActor/{id}")
-	public ResponseEntity<FilmActor> getFilmActorById(@PathVariable(value = "id") int filmActorId)
-			throws ResourceAccessException {
-		FilmActor filmActor = filmActorRepo.findById(filmActorId)
-				.orElseThrow(() -> new ResourceAccessException("Record not found for this id: " + filmActorId));
-		return ResponseEntity.ok().body(filmActor);
-	}
 
 	@GetMapping("/actorsFilms/{id}")
 	public Set<Film> getActorsFilms(@PathVariable(value = "id") int actorId)
@@ -173,7 +158,7 @@ public class SakilaMicroserviceApplication {
 
 	@GetMapping("/randomFilms")
 	public @ResponseBody
-	Set<Film> getRandomFilms() { return filmRepo.getRandom8Films();}
+	List<Film> getRandomFilms() { return filmRepo.getRandom8Films();}
 
 /*
 	@GetMapping("/filmsActors/{id}")

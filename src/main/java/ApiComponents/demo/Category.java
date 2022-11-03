@@ -19,8 +19,7 @@ public class Category {
     @Column(name = "name")
     String category;
 
-    @OneToMany(mappedBy = "category")
-    @Fetch(FetchMode.JOIN)
+    @ManyToMany(mappedBy = "category")
     @JsonIgnore
     Set<Film> films;
 

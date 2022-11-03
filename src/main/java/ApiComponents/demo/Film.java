@@ -1,5 +1,7 @@
 package ApiComponents.demo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Set;
@@ -16,15 +18,14 @@ public class Film {
 
 
     @ManyToMany(mappedBy = "films", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @JsonIgnore
     Set<Actor> actors;
 
-    @ManyToOne
-    @JoinTable(
-            name = "film_category",
-            joinColumns = @JoinColumn(name = "film_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id")
-    )
-    Category category;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "film_category", joinColumns = @JoinColumn(name = "film_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id"))
+    @JsonIgnore
+    Set<Category> category;
 
 
 
@@ -132,20 +133,18 @@ public class Film {
         this.rating = rating;
     }
 
-    public Category getCategory() {
+    public Set<Category> getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(Set<Category> category) {
         this.category = category;
     }
 
-    /*
+
     public Set<Actor> getActors() {
         return actors;
     }
-
-     */
 
 
 }
