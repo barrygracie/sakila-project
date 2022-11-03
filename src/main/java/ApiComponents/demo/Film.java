@@ -1,6 +1,8 @@
 package ApiComponents.demo;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -18,13 +20,13 @@ public class Film {
 
 
     @ManyToMany(mappedBy = "films", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JsonIgnore
+    @JsonBackReference
     Set<Actor> actors;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "film_category", joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    @JsonIgnore
+    @JsonManagedReference
     Set<Category> category;
 
 

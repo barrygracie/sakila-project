@@ -1,4 +1,5 @@
 package ApiComponents.demo;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -20,7 +21,7 @@ public class Category {
     String category;
 
     @ManyToMany(mappedBy = "category")
-    @JsonIgnore
+    @JsonBackReference
     Set<Film> films;
 
     public Category(int category_id, String category){
