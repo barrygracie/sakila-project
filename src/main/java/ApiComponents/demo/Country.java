@@ -18,7 +18,7 @@ public class Country {
     @Column(name = "country")
     String country;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "c")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
     @Fetch(FetchMode.JOIN)
     @JsonIgnore
     Set<City> City;
