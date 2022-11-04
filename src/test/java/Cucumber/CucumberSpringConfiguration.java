@@ -1,3 +1,5 @@
+package Cucumber;
+
 import ApiComponents.demo.SakilaMicroserviceApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import io.cucumber.spring.CucumberContextConfiguration;
