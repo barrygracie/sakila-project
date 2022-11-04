@@ -21,7 +21,7 @@ public class Category {
     String category;
 
     @ManyToMany(mappedBy = "category")
-    @JsonBackReference
+    @JsonIgnore
     Set<Film> films;
 
     public Category(int category_id, String category){

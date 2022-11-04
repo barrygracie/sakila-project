@@ -76,7 +76,7 @@ public class SakilaMicroserviceApplication {
 	}
 
 	@PostMapping("/actors")
-	public ResponseEntity<Actor> save(@RequestBody Actor actorDetails) {
+	public ResponseEntity<Actor> saveActor(@RequestBody Actor actorDetails) {
 
 		try {
 			return new ResponseEntity<>(actorRepo.save(actorDetails), HttpStatus.CREATED);

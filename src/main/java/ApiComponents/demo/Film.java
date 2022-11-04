@@ -28,7 +28,7 @@ public class Film {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "film_category", joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
-    @JsonManagedReference
+    @JsonIgnore
     Set<Category> category;
 
 
