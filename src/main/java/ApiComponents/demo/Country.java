@@ -1,5 +1,6 @@
 package ApiComponents.demo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
@@ -20,7 +21,7 @@ public class Country {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "country")
     @Fetch(FetchMode.JOIN)
-    @JsonIgnore
+    @JsonManagedReference
     Set<City> City;
 
     //Constructors

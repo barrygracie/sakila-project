@@ -134,7 +134,7 @@ public class SakilaMicroserviceApplication {
 
 
 	@GetMapping("/actorsFilms/{id}")
-	public Set<Film> getActorsFilms(@PathVariable(value = "id") int actorId)
+	public List<Film> getActorsFilms(@PathVariable(value = "id") int actorId)
 			throws ResourceAccessException {
 		Actor actor = actorRepo.findById(actorId)
 				.orElseThrow(() -> new ResourceAccessException("Actor not found for this id: " + actorId));
@@ -168,10 +168,6 @@ public class SakilaMicroserviceApplication {
 	@GetMapping("/selectActor")
 	public @ResponseBody
 	Actor selectActor(){return actorRepo.selectActor();}
-
-
-
-
 
 
 

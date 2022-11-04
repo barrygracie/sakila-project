@@ -1,11 +1,13 @@
 package ApiComponents.demo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -26,8 +28,8 @@ public class Actor {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "film_actor", joinColumns = @JoinColumn(name = "actor_id"),
             inverseJoinColumns = @JoinColumn(name = "film_id"))
-    @JsonManagedReference
-    Set<Film> films;
+    @JsonIgnoreProperties("actors")
+    List<Film> films;
 
 
     //Constructors
@@ -70,7 +72,7 @@ public class Actor {
         this.actorId = actorId;
     }
 
-    public Set<Film> getFilms() {
+    public List<Film> getFilms() {
         return films;
     }
 }

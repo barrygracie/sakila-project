@@ -1,4 +1,6 @@
 package ApiComponents.demo;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,6 +14,7 @@ public class City {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", insertable = false, updatable = false)
+    @JsonBackReference
     Country country;
 
     @Column(name = "city")
