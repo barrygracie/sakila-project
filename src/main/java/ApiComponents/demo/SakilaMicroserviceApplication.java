@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.ResourceAccessException;
 
+import java.util.List;
+
 
 @SpringBootApplication
 @RestController
@@ -45,7 +47,7 @@ public class SakilaMicroserviceApplication {
 
 	@GetMapping("/allActors")
 	public @ResponseBody
-	Iterable<Actor> getAllActors(){
+	List<Actor> getAllActors(){
 		return actorRepo.findAll();
 	}
 
@@ -100,7 +102,7 @@ public class SakilaMicroserviceApplication {
 
 	@GetMapping("/allFilms")
 	public @ResponseBody
-	Iterable<Film> getAllFilms(){
+	List<Film> getAllFilms(){
 		return filmRepo.findAll();
 	}
 
@@ -116,7 +118,7 @@ public class SakilaMicroserviceApplication {
 
 	@GetMapping("/allCity")
 	public @ResponseBody
-	Iterable<City> getAllCity(){
+	List<City> getAllCity(){
 		return cityRepo.findAll();
 	}
 
@@ -130,19 +132,19 @@ public class SakilaMicroserviceApplication {
 
 	@GetMapping("/allCategories")
 	public @ResponseBody
-	Iterable<Category> getAllCategories(){
+	List<Category> getAllCategories(){
 		return catRepo.findAll();
 	}
 
 	@GetMapping("/allCountries")
 	public @ResponseBody
-	Iterable<Country> getAllCountries(){
+	List<Country> getAllCountries(){
 		return countryRepo.findAll();
 	}
 
 	@GetMapping("/random4Films")
 	public @ResponseBody
-	Iterable<Film> getRandom4Films() { return filmRepo.getRandom4Films();}
+	List<Film> getRandom4Films() { return filmRepo.getRandom4Films();}
 
 	@GetMapping("/randomFilm")
 	public @ResponseBody
@@ -150,7 +152,7 @@ public class SakilaMicroserviceApplication {
 
 	@GetMapping("/randomCountry")
 	public @ResponseBody
-	Iterable<Country> getRandomCountry() { return countryRepo.getRandomCountry();}
+	List<Country> getRandomCountry() { return countryRepo.getRandomCountry();}
 
 	@GetMapping("/randomCity/{id}")
 	public @ResponseBody

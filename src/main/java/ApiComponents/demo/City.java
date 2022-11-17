@@ -59,11 +59,5 @@ public class City {
         this.countryId = countryId;
     }
 
-    public Country getCountry() {
-        return country;
-    }
 
-    public void setCountry(Country country) {
-        this.country = country;
-    }
 }

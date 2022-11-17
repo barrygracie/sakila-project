@@ -1,11 +1,10 @@
 package ApiComponents.demo;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
+
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
+
 
 @Entity
 @Table(name = "category")
@@ -22,7 +21,7 @@ public class Category {
 
     @ManyToMany(mappedBy = "category")
     @JsonIgnore
-    Set<Film> films;
+    List<Film> films;
 
     public Category(int category_id, String category){
         this.categoryId = category_id;
@@ -46,11 +45,4 @@ public class Category {
         this.category = category;
     }
 
-    public Set<Film> getFilms() {
-        return films;
-    }
-
-    public void setFilms(Set<Film> films) {
-        this.films = films;
-    }
 }

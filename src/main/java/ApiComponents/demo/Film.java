@@ -29,7 +29,7 @@ public class Film {
     @JoinTable(name = "film_category", joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     @JsonIgnore
-    Set<Category> category;
+    List<Category> category;
 
 
 
@@ -137,18 +137,7 @@ public class Film {
         this.rating = rating;
     }
 
-    public Set<Category> getCategory() {
-        return category;
-    }
 
-    public void setCategory(Set<Category> category) {
-        this.category = category;
-    }
-
-
-    public List<Actor> getActors() {
-        return actors;
-    }
 
 
 }

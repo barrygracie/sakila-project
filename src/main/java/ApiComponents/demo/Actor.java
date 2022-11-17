@@ -72,7 +72,5 @@ public class Actor {
         this.actorId = actorId;
     }
 
-    public List<Film> getFilms() {
-        return films;
-    }
+
 }

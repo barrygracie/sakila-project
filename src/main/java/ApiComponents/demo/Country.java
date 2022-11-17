@@ -51,7 +51,5 @@ public class Country {
         this.country = country;
     }
 
-    public List<ApiComponents.demo.City> getCity() {
-        return City;
-    }
+
 }
