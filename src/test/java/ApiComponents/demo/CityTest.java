@@ -8,6 +8,12 @@ public class CityTest {
     City c = new City("Elgin", 102);
 
     @Test
+    public void testBlankCityConstructor() {
+        City d = new City();
+        Assertions.assertTrue(d instanceof City);
+    }
+
+    @Test
     public void testGetCityId(){
         Assertions.assertEquals(0, c.getCityId(), "not getting cityId correctly");
     }

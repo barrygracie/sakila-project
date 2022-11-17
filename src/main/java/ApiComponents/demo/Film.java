@@ -21,11 +21,11 @@ public class Film {
     int filmId;
 
 
-    @ManyToMany(mappedBy = "films", cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "films")
     @JsonIgnoreProperties("films")
     List<Actor> actors;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany
     @JoinTable(name = "film_category", joinColumns = @JoinColumn(name = "film_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     @JsonIgnore

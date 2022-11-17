@@ -7,6 +7,12 @@ public class CategoryTest {
     Category ca = new Category(32, "TestCat");
 
     @Test
+    public void testBlankCategoryConstructor(){
+        Category cat = new Category();
+        Assertions.assertTrue(cat instanceof Category);
+    }
+
+    @Test
     public void testGetCategoryId(){
         Assertions.assertEquals(32, ca.getCategoryId(), "not getting categoryId correctly");
     }
@@ -27,15 +33,5 @@ public class CategoryTest {
         ca.setCategory("TestCat2");
         Assertions.assertEquals("TestCat2", ca.getCategory(), "not setting category correctly");
     }
-    /*
-    TODO Unit tests for methods below in category class
 
-    public Set<Film> getFilms() {
-        return films;
-    }
-
-    public void setFilms(Set<Film> films) {
-        this.films = films;
-    }
-     */
 }

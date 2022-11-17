@@ -8,6 +8,12 @@ public class CountryTest {
     Country co = new Country("Madeupistan");
 
     @Test
+    public void testBlankCountryConstructor() {
+        Country test = new Country();
+        Assertions.assertTrue(test instanceof Country);
+    }
+
+    @Test
     public void testGetCountryId(){
         Assertions.assertEquals(0, co.getCountryId(), "not getting countryId correctly");
     }

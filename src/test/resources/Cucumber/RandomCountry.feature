@@ -1,6 +1,6 @@
-Feature: When user is playing the game, randomly assign a country where the "battle" takes place
+Feature: When user is playing the country quiz, randomly select 4 countries to generate questions
 
   Scenario: Successfully selecting a random country
-    Given a user is ready to start a battle
-    When the user begins the battle process
-    Then the program returns a random country
+    Given User playing country quiz
+    When the quiz is being generated
+    Then the program returns 4 random countries

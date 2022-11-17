@@ -7,6 +7,17 @@ public class ActorTest {
     Actor a = new Actor(3000,"Tommy", "Tester");
 
     @Test
+    public void testActorConstructor(){
+        Actor b = new Actor("Com","Truise");
+        Assertions.assertEquals("Com", b.getActorFirstName(), "not creating new actor properly");
+    }
+
+    public void testBlankActorConstructor(){
+        Actor c = new Actor();
+        Assertions.assertTrue(c instanceof Actor);
+    }
+
+    @Test
     public void testGetActorFirstName(){
         Assertions.assertEquals("Tommy", a.getActorFirstName(), "not getting first name correctly");
     }

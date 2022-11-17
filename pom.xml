@@ -19,7 +19,8 @@
     <sonar.organization>barrygracie</sonar.organization>  
     <sonar.host.url>https://sonarcloud.io</sonar.host.url>  
     <maven.compiler.source>17</maven.compiler.source>  
-    <maven.compiler.target>17</maven.compiler.target>  
+    <maven.compiler.target>17</maven.compiler.target>
+    <sonar.coverage.exclusions>src/main/java/ApiComponents/demo/SakilaMicroserviceApplication.java</sonar.coverage.exclusions>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
   </properties>  
   <dependencies> 
@@ -74,7 +75,12 @@
       <artifactId>cucumber-spring</artifactId>  
       <version>7.8.1</version>  
       <scope>test</scope> 
-    </dependency> 
+    </dependency>
+    <dependency>
+      <groupId>org.seleniumhq.selenium</groupId>
+      <artifactId>selenium-java</artifactId>
+      <version>4.6.0</version>
+    </dependency>
   </dependencies>  
   <build> 
     <plugins> 

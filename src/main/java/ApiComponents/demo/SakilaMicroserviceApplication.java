@@ -128,15 +128,6 @@ public class SakilaMicroserviceApplication {
 		return ResponseEntity.ok().body(city);
 	}
 
-	//delete this
-	@GetMapping("/actorsFilms/{id}")
-	public Iterable<Film> getActorsFilms(@PathVariable(value = "id") int actorId)
-			throws ResourceAccessException {
-		Actor actor = actorRepo.findById(actorId)
-				.orElseThrow(() -> new ResourceAccessException("Actor not found for this id: " + actorId));
-		return actor.getFilms();
-	}
-
 	@GetMapping("/allCategories")
 	public @ResponseBody
 	Iterable<Category> getAllCategories(){
