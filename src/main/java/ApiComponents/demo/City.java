@@ -1,5 +1,6 @@
 package ApiComponents.demo;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -14,7 +15,7 @@ public class City {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id", insertable = false, updatable = false)
-    @JsonBackReference
+    @JsonIgnore
     Country country;
 
     @Column(name = "city")

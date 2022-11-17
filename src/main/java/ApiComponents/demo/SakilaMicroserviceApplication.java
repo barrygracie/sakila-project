@@ -10,11 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.ResourceAccessException;
 
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-
 @SpringBootApplication
 @RestController
 @RequestMapping("/home")
@@ -109,6 +104,8 @@ public class SakilaMicroserviceApplication {
 		return filmRepo.findAll();
 	}
 
+
+	//change this to first name or surname
 	@GetMapping("/films/{id}")
 	public ResponseEntity<Film> getFilmById(@PathVariable(value = "id") int filmId)
 			throws ResourceAccessException {
@@ -131,10 +128,9 @@ public class SakilaMicroserviceApplication {
 		return ResponseEntity.ok().body(city);
 	}
 
-
-
+	//delete this
 	@GetMapping("/actorsFilms/{id}")
-	public List<Film> getActorsFilms(@PathVariable(value = "id") int actorId)
+	public Iterable<Film> getActorsFilms(@PathVariable(value = "id") int actorId)
 			throws ResourceAccessException {
 		Actor actor = actorRepo.findById(actorId)
 				.orElseThrow(() -> new ResourceAccessException("Actor not found for this id: " + actorId));
@@ -153,17 +149,25 @@ public class SakilaMicroserviceApplication {
 		return countryRepo.findAll();
 	}
 
-	@GetMapping("/randomFilms")
+	@GetMapping("/random4Films")
 	public @ResponseBody
-	List<Film> getRandomFilms() { return filmRepo.getRandom8Films();}
+	Iterable<Film> getRandom4Films() { return filmRepo.getRandom4Films();}
 
-	@GetMapping("/randomCountries")
+	@GetMapping("/randomFilm")
 	public @ResponseBody
-	List<Country> getRandomCountries() { return countryRepo.getRandomCountries();}
+	Film getRandomFilm() { return filmRepo.getRandomFilm();}
+
+	@GetMapping("/randomCountry")
+	public @ResponseBody
+	Iterable<Country> getRandomCountry() { return countryRepo.getRandomCountry();}
 
 	@GetMapping("/randomCity/{id}")
 	public @ResponseBody
 	City selectCity(@PathVariable(value = "id") int countryId){return cityRepo.selectCityFromCountry(countryId);}
+
+	@GetMapping("/randomCity")
+	public @ResponseBody
+	City getRandomCity() { return cityRepo.getOneRandomCity();}
 
 	@GetMapping("/selectActor")
 	public @ResponseBody
