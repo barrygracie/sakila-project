@@ -7,6 +7,8 @@ import io.cucumber.spring.ScenarioScope;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 
 public class CountryQuizStepDef {
 
@@ -28,7 +30,7 @@ public class CountryQuizStepDef {
     @Autowired
     SakilaMicroserviceApplication app = new SakilaMicroserviceApplication(actorRepo, filmRepo,cityRepo,countryRepo,catRepo);
 
-    Iterable<Country> result;
+    List<Country> result;
     boolean countryQuiz;
 
 
@@ -43,9 +45,13 @@ public class CountryQuizStepDef {
         result = app.getRandomCountry();
 
     }
-    @Then("the program returns {int} random countries")
+    @Then("the program returns four random countries")
     public void the_program_returns_four_random_countries() {
+        int length = result.size();
+        Country check = result.get(0);
 
-        Assertions.assertTrue(countryQuiz);
+        Assertions.assertTrue(length==4);
+        Assertions.assertTrue(check instanceof Country);
+
     }
 }

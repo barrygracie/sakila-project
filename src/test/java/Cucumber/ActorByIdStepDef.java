@@ -1,5 +1,4 @@
 package Cucumber;
-
 import ApiComponents.demo.*;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,7 +7,9 @@ import io.cucumber.spring.ScenarioScope;
 import org.junit.jupiter.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class CreateCharacterStepDef {
+import java.util.List;
+
+public class ActorByIdStepDef {
 
     @Autowired
     private ActorRepository actorRepo;
@@ -28,20 +29,22 @@ public class CreateCharacterStepDef {
     @Autowired
     SakilaMicroserviceApplication app = new SakilaMicroserviceApplication(actorRepo, filmRepo,cityRepo,countryRepo,catRepo);
 
-    String firstName;
-    String secondName;
+    int id;
 
-    @Given("a user wants to create their own character")
-    public void a_user_wants_to_create_their_own_character() {
-        firstName = "Timothy";
-        secondName = "Testerino";
+    Actor test;
+
+    @Given("User wants to find an actor by id")
+    public void user_wants_to_find_an_actor_by_id() {
+       id=7;
     }
-    @When("the user inputs character info")
-    public void the_user_inputs_character_info() {
-        //method here to write info to a new Actor
+    @When("the user searches for an actor by id")
+    public void the_user_searches_for_an_actor_by_id() {
+        test = app.getActorById(id).getBody();
     }
-    @Then("the program stores an actor in the database")
-    public void the_program_stores_an_actor_in_the_database() {
-        //Check name of new actor
+    @Then("the program returns the correct actor")
+    public void the_program_returns_the_correct_actor() {
+        Assertions.assertEquals("GRACE",test.getActorFirstName(),"not getting actor");
     }
+
+
 }
